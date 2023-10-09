@@ -14,4 +14,70 @@ body {
     border: 5px solid black;
     height: 600px;
     width: 480px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calculator div {
+    
+    flex: 1;
+    margin: 5px;
+    justify-content: space-between;
+    
+}
+
+div.output {
+    line-height: 50px;
+    text-align: right;
+    flex: .1;
+    border: 1px solid black;
+    margin: 10px;
+    font-size: 50px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.row div {
+    text-align: center;
+    line-height: 80px;
+    border: 1px solid black;
+}
+
+.clearRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.clearRow .clearRest {
+    display: flex;
+    text-align: center;
+    line-height: 80px;
+    flex: 1;
+    margin: 0;
+    margin-left: 5px;
+}
+
+
+.clearRest div {
+    border: 1px solid black;
+    margin: 5px;
+}
+
+.clearRow .clear {
+    border: 1px solid black;
+    flex: 1;
+    text-align: center;
+    line-height: 80px;
+   
+    margin-right: 10px;
+    
 }
