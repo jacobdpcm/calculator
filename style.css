@@ -19,9 +19,7 @@ body {
 }
 
 .calculator div {
-    
     flex: 1;
-    margin: 5px;
     justify-content: space-between;
     
 }
@@ -41,11 +39,13 @@ div.output {
 }
 
 .row {
+    
     display: flex;
     flex-direction: row;
 }
 
 .row div {
+    margin: 5px;
     text-align: center;
     line-height: 80px;
     border: 1px solid black;
@@ -62,14 +62,16 @@ div.output {
     text-align: center;
     line-height: 80px;
     flex: 1;
-    margin: 0;
-    margin-left: 5px;
+    margin: 5px;
+    
 }
 
+.clearRest {
+    gap: 10px;
+}
 
 .clearRest div {
     border: 1px solid black;
-    margin: 5px;
 }
 
 .clearRow .clear {
@@ -77,7 +79,16 @@ div.output {
     flex: 1;
     text-align: center;
     line-height: 80px;
-   
-    margin-right: 10px;
+    margin: 5px;
+}
+
+.rowEqual .restEqual {
+    display: flex;
+    flex-direction: row;
+    border: none;
+    gap: 10px;
+}
+.restEqual div {
+    margin: 0px;
     
 }
