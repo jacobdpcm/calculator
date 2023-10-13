@@ -76,6 +76,11 @@ calcButtons.forEach(calcButton => calcButton.addEventListener('click', e => {
         clearNextClick = false;
         firstValue = '';
         secondValue = '';
+
+        //Get rid of highlights:
+        operatorButtons.forEach(operatorButton => {
+            operatorButton.classList.remove('highlight');
+        })
     }
 
     if(e.target.innerText === '.') {
@@ -95,8 +100,11 @@ calcButtons.forEach(calcButton => calcButton.addEventListener('click', e => {
     }
 
     if(e.target.innerText === '+' || e.target.innerText === '-' || e.target.innerText === 'x' || e.target.innerText === '/') {
+        const output = document.querySelector('.output');
         //Allows user to change sign if a non-operater has not been clicked yet:
-        if(clearNextClick){
+        if(output.textContent === '' || output.textContent === '.' || output.textContent === '-') {
+            return;
+        } else if(clearNextClick){
             for(let operator in operators) {operators[operator] = false};
             switch (e.target.innerText) {
             case '+':
@@ -179,33 +187,62 @@ calcButtons.forEach(calcButton => calcButton.addEventListener('click', e => {
 
     if(e.target.innerText === '=') {
         secondValue = storeOutput();
-            const arrCheck = Object.entries(operators)
-            const whichOperator = arrCheck.find(operator => {return operator[1]})
-            switch (whichOperator[0]){
-                case 'addition':
-                    firstValue = add(firstValue, secondValue);
-                    clearOutput();
-                    updateOutput(firstValue);
-                    break;
-                case 'subtraction':
-                    firstValue = subtract(firstValue, secondValue);
-                    clearOutput();
-                    updateOutput(firstValue);
-                    break;
-                case 'multiplication':
-                    firstValue = multiply(firstValue, secondValue);
-                    clearOutput();
-                    updateOutput(firstValue);
-                    break;
-                case 'division':
-                    firstValue = divide(firstValue, secondValue);
-                    clearOutput();
-                    updateOutput(firstValue);
-                    break;
-            }
-            for(let operator in operators) {operators[operator] = false};
-            clearNextClick = true;
+        const arrCheck = Object.entries(operators)
+        const whichOperator = arrCheck.find(operator => {return operator[1]})
+        switch (whichOperator[0]){
+            case 'addition':
+                firstValue = add(firstValue, secondValue);
+                clearOutput();
+                updateOutput(firstValue);
+                break;
+            case 'subtraction':
+                firstValue = subtract(firstValue, secondValue);
+                clearOutput();
+                updateOutput(firstValue);
+                break;
+            case 'multiplication':
+                firstValue = multiply(firstValue, secondValue);
+                clearOutput();
+                updateOutput(firstValue);
+                break;
+            case 'division':
+                firstValue = divide(firstValue, secondValue);
+                clearOutput();
+                updateOutput(firstValue);
+                break;
+        }
+        for(let operator in operators) {operators[operator] = false};
+        clearNextClick = true;
+
+        //Get rid of highlights:
+        operatorButtons.forEach(operatorButton => {
+            operatorButton.classList.remove('highlight');
+        })
     }
 }))
 
+//Add darkening effect for button clicks:
+const nonOperators = document.querySelectorAll('.noperator');
+calcButtons.forEach(calcButton => calcButton.addEventListener('mousedown', () => {
+    calcButton.classList.add('change')   
+}))
+window.addEventListener('mouseup', () => {
+    calcButtons.forEach(calcButton => {
+        calcButton.classList.remove('change');
+    })
+}) 
+
+//Add highlight for clicked Operator:
+const operatorButtons = document.querySelectorAll('.operator');
+operatorButtons.forEach(operatorButton => operatorButton.addEventListener('click', () => {
+    const output = document.querySelector('.output');
+    console.log(output)
+    if(output.textContent === '' || output.textContent === '.' || output.textContent === '-') {
+        return;
+    }
+    operatorButtons.forEach(operatorButton => {
+        operatorButton.classList.remove('highlight');
+    })
+    operatorButton.classList.add('highlight');
+}))
 

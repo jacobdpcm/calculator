@@ -14,6 +14,7 @@ body {
     border: 5px solid black;
     height: 600px;
     width: 480px;
+    background-color: gray;
     display: flex;
     flex-direction: column;
 }
@@ -31,6 +32,22 @@ div.output {
     border: 1px solid black;
     margin: 10px;
     font-size: 30px;
+    background-color: white;
+}
+
+.digit {
+    background-color: rgb(174, 173, 173);
+    color: rgb(0, 0, 0);
+}
+
+.operator {
+    background-color: maroon;
+    color: white;
+}
+
+.unique {
+    background-color: navy;
+    color: white;
 }
 
 .inputs {
@@ -89,6 +106,18 @@ div.output {
     gap: 10px;
 }
 .restEqual div {
-    margin: 0px;
-    
+    margin: 0px; 
+}
+
+.equal {
+    background-color: rgb(19, 112, 40);
+    color: white;
+}
+
+.change {
+    filter: brightness(.85);
+}
+
+.calculator .highlight {
+    border: 1px solid white;
 }
